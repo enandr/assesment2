@@ -1,0 +1,97 @@
+<!-- //1. Create a new variable called "timeRemaining" and give it a value of 600
+
+
+//2. Create a new variable called "recordedTimes" which is an array with nothing in it
+
+
+//3. Write a for loop that runs 10 times and each time it runs subtracts 60 from the timeRemaining variable and adds the current value of timeRemaining to the recordedTimes array
+
+
+//4. Cause the "recordedTimes" array to be logged to the console
+
+
+//5. If the value of the "timeRemaining" variable is less than 0 log "you’re out of time..." to the console; otherwise log "you’ve made it!"
+
+
+//6. Create a new variable called "stats" which is an empty object
+
+
+
+
+//7a. Define a function named "getStats" which does the following:
+//7b. Specifies two parameters as "statsObj" (which is an object) and "numbersArr" (which is an array) that will be accepted as arguments
+//7c. Loops through the "numbersArr" array with a for loop, which finds the smallest number and stores the value in a property called "smallestNum" on "statsObj"
+//7d. Loops through the "numbersArr" array with a while loop, which adds all the numbers together into a variable called "arrTotal"
+//7e. Divide "arrTotal" by the total number of items in "numbersArr" (this number should be obtained using JavaScript, not hard-coded) and store the value in a property called "averageNum" on "statsObj"
+//7f. Return "statsObj"
+
+
+
+
+//8. Call the "getStats" function and assign the returned value into a new variable called “testStats”. Pass in the "stats" and "recordedTimes" variables as arguments.
+
+
+//9. Console log the values of the "smallestNum" and "averageNum" properties of the returned object in the format: "The smallest number is ## and the average of all the numbers is ##" 
+
+
+// Code Section (Write all code below this point) -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        var timeRemaining = 600;
+        var recordedTimes = [];
+        for (i=0;i<10;i++){
+            timeRemaining-=60;
+            recordedTimes.push(timeRemaining);
+            console.log(recordedTimes);
+            if (timeRemaining<0){
+                console.log("You are out of time");
+            } 
+            else if(timeRemaining===0){
+                console.log("You've Mad It");
+            }
+        }
+        
+        var stats = {};
+        var statsObj = {};
+        var testStats = {};
+        var numbersArr = [];
+        var arrTotal=0;
+
+        /* for (i=0;i<10;i++){
+            numbersArr.push(Math.floor(Math.random() * 100));
+            //puts 10 random numbers into numbersArr
+        } */
+
+        testStats = getStats(stats,recordedTimes);
+        console.log("The smallest number is "+testStats.smallestNum+" and the average number is "+testStats.averageNum);
+        
+        function getStats(statsObj,numbersArr){
+            var currentNum = 100;
+            for (i=0;i<numbersArr.length;i++){
+                if (numbersArr[i]<currentNum){
+                    currentNum=numbersArr[i]
+                    statsObj.smallestNum=currentNum;
+                }
+            }
+            i=0;
+            while (numbersArr[i]!=undefined){
+                arrTotal+=numbersArr[i];
+                i++;
+            }
+            statsObj.averageNum=arrTotal/numbersArr.length;
+            return statsObj;
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
